@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Documents - Home</title>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+
+</head>
+<body style="display: flex; flex-direction: column; height: 100%; margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333;">
+  <header style="background-color: #4CAF50; color: white; padding: 10px 0; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="font-size: 2rem; margin-bottom: 10px; color: #fff;">Secure Document Sharing</div>
+      <nav style="display: flex; gap: 15px;">
+        <a href="login.html" id="loginLink" style="color: white; text-decoration: none; padding: 10px; border-radius: 5px;">Login</a>
+        <a href="register.html" id="registerLink" style="color: white; text-decoration: none; padding: 10px; border-radius: 5px;">Register</a>
+        <a href="#" id="uploadDocLink" style="color: white; text-decoration: none; padding: 10px; border-radius: 5px; display: none;">Upload Document</a>
+        <a href="#" id="profileLink" style="color: white; text-decoration: none; padding: 10px; border-radius: 5px; display: none;">My Profile</a>
+        <a href="#" id="logoutLink" style="color: white; text-decoration: none; padding: 10px; border-radius: 5px; display: none;">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <div style="flex: 1; max-width: 1000px; margin: 80px auto 20px; padding: 20px;">
+    <p>Your digital vault for securing and sharing important documents with family members. Save time, reduce risks, and ensure your documents are always within reach.</p>
+
+    <!-- Ratings Section -->
+    <div style="margin-top: 40px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+      <h2>Ratings from our users</h2>
+      <div style="overflow: hidden; position: relative; width: 100%; height: 100px;">
+        <div style="display: flex; width: 300%; animation: slide 15s infinite;">
+          <div style="width: 100%; text-align: center;">
+            <div style="color: gold; font-size: 1.5rem; margin: 10px 0;">★★★★★ 4.8/5</div>
+            <p>"An incredibly useful platform! I no longer have to worry about losing important documents."</p>
+            <p>- Amit, Delhi</p>
+          </div>
+          <div style="width: 100%; text-align: center;">
+            <div style="color: gold; font-size: 1.5rem; margin: 10px 0;">★★★★☆ 4.5/5</div>
+            <p>"Great service. Easy to use and very reliable."</p>
+            <p>- Priya, Mumbai</p>
+          </div>
+          <div style="width: 100%; text-align: center;">
+            <div style="color: gold; font-size: 1.5rem; margin: 10px 0;">★★★★★ 5/5</div>
+            <p>"A must-have tool for anyone with important documents."</p>
+            <p>- Rahul, Bangalore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Importance Section -->
+    <div style="margin-top: 40px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+      <h2>Why Secure Document Sharing?</h2>
+      <p>In today's world, digital security is more important than ever. Physical documents are prone to loss, theft, or damage. With our platform, you can:</p>
+      <ul>
+        <li>Keep your essential documents safe in a digital vault</li>
+        <li>Share documents with trusted family members anytime</li>
+        <li>Access your documents on the go, from anywhere</li>
+        <li>Reduce risks of theft or misplacement</li>
+      </ul>
+    </div>
+
+    <!-- Usage Section -->
+    <div style="margin-top: 40px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+      <h2>How it Works?</h2>
+      <ol>
+        <li>Register and log in to your account</li>
+        <li>Upload your important documents securely</li>
+        <li>Share the documents with family members as needed</li>
+        <li>Manage your documents anytime, update or delete as necessary</li>
+      </ol>
+    </div>
+
+    <!-- Profile Section (Hidden until login) -->
+    <div id="profileSection" style="display: none; margin-top: 30px;">
+      <h2>My Profile</h2>
+      <p>Welcome, <span id="userEmail"></span>! You can manage your documents here.</p>
+    </div>
+
+    <!-- Upload Document Section (Hidden until login) -->
+    <div id="uploadSection" style="display: none; margin-top: 30px;">
+      <h2>Upload Document</h2>
+      <form id="uploadDocForm">
+        <input type="file" id="document" required>
+        <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Upload Document</button>
+      </form>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 10px; background-color: #333; color: #fff; width: 100%;">
+    <p>&copy; 2024 Secure Document Sharing. All rights reserved.</p>
+  </footer>
+
+  <!-- Include custom scripts -->
+  <script src="scripts.js"></script>
+
+  <style>
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</body>
+</html>

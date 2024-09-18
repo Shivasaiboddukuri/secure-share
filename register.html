@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Secure Documents</title>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+<style>
+  /* CSS for register form */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-title">Secure Document Sharing</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Register</h1>
+    <form id="registerForm">
+      <div class="form-group">
+        <label for="registerName">Name:</label>
+        <input type="text" id="registerName" name="name" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" name="email" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="registerAadhaar">Aadhaar Number:</label>
+        <input type="text" id="registerAadhaar" name="aadhaar" autocomplete="off" required>
+      </div>
+      <div class="form-group">
+        <label for="registerPassword">Password:</label>
+        <input type="password" id="registerPassword" name="password" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Secure Document Sharing. All rights reserved.</p>
+  </footer>
+
+  <!-- Include custom scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>
